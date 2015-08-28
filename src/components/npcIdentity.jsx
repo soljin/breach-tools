@@ -17,7 +17,8 @@ var styles={
         fontWeight:"bold",
         fontSize:"1.5em",
         color:"white",
-        textAlign:"center"
+        textAlign:"center",
+        textShadow:"3px 3px rgba(0,0,0,0.65)"
     },
     subHeader:{
         textAlign:"center",
@@ -41,13 +42,13 @@ var styles={
 };
 
 var FactionColorMap={
-    Guild:"#CC0000",
-    "Resurectionists":"#336600",
-    "Neverborn":"#660066",
-    "Archanists":"#000099",
-    "Outcasts":"#FF9900",
-    "Gremlins":"#339933",
-    "Ten Thunders":"#CC9900"
+    Guild:"#DD0000",
+    "Resurectionists":"#669900",
+    "Neverborn":"#990099",
+    "Archanists":"#0000dd",
+    "Outcasts":"#FFBB00",
+    "Gremlins":"#33CC33",
+    "Ten Thunders":"#EECC00"
 };
 
 var NPCIdentity = React.createClass({

@@ -2,7 +2,7 @@ var React = require('react');
 
 var styles={
     label:{
-        fontSize:"0.7em"
+        fontSize:"11px"
     },
     input:{
         width:"100%",

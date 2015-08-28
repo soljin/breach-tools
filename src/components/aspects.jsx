@@ -8,7 +8,7 @@ var styles = {
         textAlign:"center"
     },
     aspectName:{
-        fontSize:"0.8em",
+        fontSize:"13px",
         fontWeight:"bold",
         margin:"1em 0 0 0"
     },
@@ -27,7 +27,7 @@ var AspectsComponent = React.createClass({
 
     renderAspect(aspect){
         var self = this,
-            value = <p style={styles.aspectValue}>{aspect.value}</p>,
+            value = <p style={styles.aspectValue}>{aspect.value} {aspect.addRank ? `(${this.props.rank.value+aspect.value})` : ""}</p>,
             editor = <InputEditor
                 ref={'input'+aspect.name}
                 onComplete={()=>this.refs["window"+aspect.name].closeEditor()}
@@ -70,7 +70,7 @@ var AspectsComponent = React.createClass({
 
     render(){
         var aspects = this.props.aspects;
-        return <div className="pure-g" style={{borderBottom:"1px solid #333"}}>
+        return <div className="pure-g" style={{backgroundColor:"#fff",borderBottom:"1px solid #333"}}>
             {aspects.toList().map(this.renderAspect)}
         </div>
     }

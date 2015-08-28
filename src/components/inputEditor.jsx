@@ -2,12 +2,12 @@ var React = require('react');
 
 var styles={
     label:{
-        fontSize:"0.7em"
+        fontSize:"11px"
     },
     input:{
         width:"100%",
         boxSizing:"border-box",
-        margin:"0.75em 0"
+        margin:"10px 0"
     }
 };
 

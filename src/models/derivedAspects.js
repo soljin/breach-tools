@@ -11,19 +11,20 @@ class DerivedAspects{
     constructor({height}, aspects, skills, rank, isNPC){
         this.defense = new Aspect({
             displayName:"Defense",
-            value: 2 + Math.max(aspects.speed.value, (skills.evade ? skills.evade.rank : 0))
+            value: 2 + Math.max(aspects.speed.value, (skills.evade ? skills.evade.rank : 0)),
+            addRank:true
         });
         this.willpower = new Aspect({
             displayName:"Willpower",
-            value: 2 + Math.max(aspects.tenacity.value, (skills.centering ? skills.centering.rank : 0))
+            value: 2 + Math.max(aspects.tenacity.value, (skills.centering ? skills.centering.rank : 0)),
+            addRank:true
         });
 
-        if(isNPC) {
-            this.initiative = new Aspect({
-                displayName: "Initiative",
-                value: rank.value + aspects.speed.value
-            });
-        }
+        this.initiative = new Aspect({
+            displayName: "Initiative",
+            value: aspects.speed.value,
+            addRank:true
+        });
 
         var resilience = aspects.resilience.value;
         this.wounds = new Aspect({

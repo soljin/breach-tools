@@ -6,12 +6,22 @@ var React = require('react'),
 
 var styles = {
     container:{
-        padding:"10px 15px",
+        padding:"10px 10px",
+        backgroundColor:"#fff",
         borderBottom:"1px solid #333"
     },
     skillRow:{
-        paddingBottom:"10px;",
-        fontSize:"0.8em"
+        paddingBottom:"10px",
+        fontSize:"13px"
+    },
+    fleft:{
+        float:"left",
+        marginRight:"5px"
+    },
+    addSkill:{
+        width:"200px",
+        margin:"auto",
+        textAlign:"center"
     }
 };
 
@@ -53,6 +63,20 @@ var Skills = React.createClass({
         return skillOptions;
     },
 
+    removeSkill(name){
+        delete this.props.skills[name.toLowerCase()];
+        this.props.update();
+    },
+
+    getSkillRow(skill){
+        return <span>
+            <b>{skill.name} ({skill.rank})</b>,&nbsp;
+            {skill.aspect},&nbsp;
+            <b>({skill.actionValue})</b>&nbsp;
+            <a title="Delete Skill" onClick={this.removeSkill.bind(this, skill.name)}>x</a>
+        </span>;
+    },
+
     render(){
         var skills = this.props.skills,
             currentSkillsList = [];
@@ -64,8 +88,19 @@ var Skills = React.createClass({
         return <div style={styles.container}>
             <div className="pure-g">
                 {currentSkillsList.map(skill=>{
-                    return <div style={styles.skillRow} className="pure-u-1-2">
-                        <b>{skill.name}</b> ({skill.aspect}): Rank {skill.rank}, <b>AV {skill.actionValue}</b>
+                    return <div style={styles.skillRow} className="pure-u-1-3">
+                        {
+                            this.floatingEditorFactory(
+                                InputEditor,
+                                value => skill.rank = this.integerFilter(value, 0, 5),
+                                skill.name,
+                                skill.rank,
+                                `Set ${skill.name} Skill Rank (0-5)`,
+                                null,
+                                this.getSkillRow(skill),
+                                styles.fleft
+                            )
+                        }
                     </div>
                 })}
             </div>
@@ -76,8 +111,8 @@ var Skills = React.createClass({
                 null,
                 "Choose New Skill",
                 this.getSkillOptions(),
-                <div>+ Skill</div>,
-                null
+                <div>Add Skill</div>,
+                styles.addSkill
             )}
         </div>;
     }

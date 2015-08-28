@@ -35,6 +35,18 @@ var EditorController = {
             >
             {child}
         </FloatingEditor>
+    },
+
+    integerFilter(value, min, max){
+        var intVal = parseInt(value, 10);
+
+        if(intVal == 0 || intVal) {
+            value = Math.max(intVal, min);
+            value = Math.min(value, max);
+        }else{
+            value = value.replace(/\w/g,'');
+        }
+        return value;
     }
 };
 

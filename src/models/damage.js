@@ -1,17 +1,17 @@
 class Damage {
     weak;
     medium;
-    strong;
+    severe;
 
     /**
      * @param weak
      * @param medium
-     * @param strong
+     * @param severe
      */
-    constructor({weak = 1, medium = 2, strong = 3}){
+    constructor({weak = 1, medium = 2, severe = 3}){
         this.weak = weak;
         this.medium = medium;
-        this.strong = strong;
+        this.severe = severe;
     }
 }
 

@@ -1,15 +1,15 @@
 class Trigger{
-    suit;
+    suits;
     name;
     description;
 
     /**
-     * @param suit
      * @param name
      * @param description
+     * @param suits
      */
-    constructor({suit, name, description}){
-        this.suit = suit;
+    constructor({name = "Trigger name", description = "Please enter the trigger description here", suits = []}){
+        this.suits = suits;
         this.name = name;
         this.description = description;
     }
