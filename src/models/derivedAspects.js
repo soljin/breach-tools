@@ -1,6 +1,6 @@
-var Aspect = require('./aspect').Aspect;
+var Aspect = require('./aspect');
 
-class DerivedAspects{
+module.exports = class DerivedAspects{
     defense;
     willpower;
     wounds;
@@ -52,7 +52,4 @@ class DerivedAspects{
                 [this.willpower, this.charge, this.wounds]
             );
     }
-}
-
-module.exports.DerivedAspects = DerivedAspects;
-
+};

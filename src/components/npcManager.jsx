@@ -1,9 +1,9 @@
 var React = require('react'),
-    NPC = require('../models/npc').NPC,
-    SelectEditor = require('./selectEditor.jsx').SelectEditor,
-    NpcComponent = require('./npc.jsx').NpcComponent;
+    NPC = require('../models/npc'),
+    SelectEditor = require('./selectEditor.jsx'),
+    NpcComponent = require('./npc.jsx');
 
-var NpcManager = React.createClass({
+var NpcManager = module.exports = React.createClass({
     getInitialState(){
         var npcs,
             npcsData;
@@ -24,6 +24,20 @@ var NpcManager = React.createClass({
 
     saveNPCs(){
         localStorage.npcs = JSON.stringify(this.state.npcs);
+    },
+
+    saveNPCImage(){
+        var win = window.open("about:blank"),
+            root = React.findDOMNode(this.refs.currentNPC);
+
+        root.classList.add("printMode");
+        html2canvas(root, {
+            onrendered: function(canvas) {
+                //console.log(canvas.toDataURL());
+                win.location.href = canvas.toDataURL();
+                root.classList.remove("printMode");
+            }
+        });
     },
 
     createNewNCP(){
@@ -73,11 +87,9 @@ var NpcManager = React.createClass({
                 label={"Select NPC to Edit"}
                 data={this.state.npcs.map((npc, index)=>{ return {value:index, name:npc.name} })}
             />
-            <button onClick={this.saveNPCs}>Save NPC</button>
             <button onClick={this.createNewNCP}>Create New NPC</button>
-            <NpcComponent update={this.update} npc={npc}/>
+            <button onClick={this.saveNPCImage}>Capture NPC Image</button>
+            <NpcComponent ref="currentNPC" update={this.update} npc={npc}/>
         </div>
     }
 });
-
-module.exports.NpcManager = NpcManager;

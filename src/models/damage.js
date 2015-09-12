@@ -1,4 +1,4 @@
-class Damage {
+module.exports = class Damage {
     weak;
     medium;
     severe;
@@ -13,6 +13,4 @@ class Damage {
         this.medium = medium;
         this.severe = severe;
     }
-}
-
-module.exports.Damage = Damage;
+};

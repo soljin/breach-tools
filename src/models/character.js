@@ -1,10 +1,17 @@
-var Aspects = require('./aspects').Aspects,
+var Aspects = require('./aspects'),
     Attack = require('./attack').Attack,
-    Skill = require('./skill').Skill,
-    Talent = require('./talent').Talent,
-    DerivedAspects = require('./derivedAspects').DerivedAspects;
+    /**
+     * @type {Skill|exports|module.exports}
+     */
+    Skill = require('./skill'),
+    /**
+     *
+     * @type {Talent|exports|module.exports}
+     */
+    Talent = require('./talent'),
+    DerivedAspects = require('./derivedAspects');
 
-class Character {
+module.exports = class Character {
     aspects;
     skills;
     attacks;
@@ -23,6 +30,4 @@ class Character {
         this.attacks = attacks.map(attack => new Attack(attack));
         this.talents = talents.map(talent => new Talent(talent));
     }
-}
-
-module.exports.Character = Character;
+};

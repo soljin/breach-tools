@@ -1,5 +1,5 @@
-var Damage = require('./damage').Damage,
-    Trigger = require('./trigger').Trigger;
+var Damage = require('./damage'),
+    Trigger = require('./trigger');
 
 var ResistType = module.exports.ResistType ={
     df: "Df",
@@ -17,7 +17,7 @@ var AttackTypes = module.exports.AttackTypes = {
     spell: "spell"
 };
 
-class Attack{
+module.exports.Attack = class Attack{
     name;
     actionPoints;
     suits;
@@ -68,6 +68,4 @@ class Attack{
         this.reload = reload ? reload : (type == AttackTypes.close ? null : 2);
         this.effect = effect;
     }
-}
-
-module.exports.Attack = Attack;
+};

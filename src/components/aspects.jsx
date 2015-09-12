@@ -1,7 +1,7 @@
 var React = require('react'),
-    FloatingEditor = require('./floatingEditor.jsx').FloatingEditor,
-    InputEditor = require('./inputEditor.jsx').InputEditor,
-    Aspects = require('../models/aspects').Aspects;
+    FloatingEditor = require('./floatingEditor.jsx'),
+    InputEditor = require('./inputEditor.jsx'),
+    Aspects = require('../models/aspects');
 
 var styles = {
     aspect:{
@@ -18,7 +18,7 @@ var styles = {
     }
 };
 
-var AspectsComponent = React.createClass({
+var AspectsComponent = module.exports = React.createClass({
     getDefaultProps(){
         return {
             editableFields:{might:true}
@@ -75,5 +75,3 @@ var AspectsComponent = React.createClass({
         </div>
     }
 });
-
-module.exports.AspectsComponent = AspectsComponent;

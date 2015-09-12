@@ -1,9 +1,10 @@
 var React = require('react'),
-    NPC = require('../models/npc').NPC,
-    AspectsComponent = require('./aspects.jsx').AspectsComponent,
-    NPCIdentity = require('./npcIdentity.jsx').NPCIdentity,
-    Skills = require('./skills.jsx').Skills,
-    AttacksComponent = require('./attacks.jsx').AttacksComponent;
+    NPC = require('../models/npc'),
+    AspectsComponent = require('./aspects.jsx'),
+    NPCIdentity = require('./npcIdentity.jsx'),
+    SkillsComponent = require('./skills.jsx'),
+    AttacksComponent = require('./attacks.jsx'),
+    TalentsComponent = require('./talents.jsx');
 
 var styles = {
     boxRoot:{
@@ -24,7 +25,7 @@ var styles = {
     }
 };
 
-var NpcComponent = React.createClass({
+var NpcComponent = module.exports = React.createClass({
     getDefaultProps(){
         return {
             npc: new NPC({})
@@ -39,12 +40,11 @@ var NpcComponent = React.createClass({
                 <NPCIdentity update={this.props.update} npc={npc}/>
                 <AspectsComponent update={this.props.update} aspects={npc.aspects} editableFields={npc.aspects}/>
                 <AspectsComponent update={this.props.update} rank={npc.rank} aspects={npc.derivedAspects} editableFields={{height:true}}/>
-                <Skills update={this.props.update} skills={npc.skills}/>
+                <SkillsComponent update={this.props.update} skills={npc.skills}/>
                 <AttacksComponent update={this.props.update} rank={npc.rank} attacks={npc.attacks} skills={npc.skills} aspects={npc.aspects}/>
+                <TalentsComponent update={this.props.update} talents={npc.talents}/>
             </div>
             <div style={styles.filigree}></div>
         </div>
     }
 });
-
-module.exports.NpcComponent = NpcComponent;

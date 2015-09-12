@@ -1,7 +1,7 @@
 var React = require('react'),
-    FloatingEditor = require('./floatingEditor.jsx').FloatingEditor;
+    FloatingEditor = require('./floatingEditor.jsx');
 
-var EditorController = {
+var EditorController = module.exports = {
     onOpen(name){
         if(this.openAspect && this.refs[this.openAspect] && "window"+name != this.openAspect){
             this.refs[this.openAspect].closeEditor();
@@ -49,5 +49,3 @@ var EditorController = {
         return value;
     }
 };
-
-module.exports.EditorController = EditorController;

@@ -1,5 +1,5 @@
-var Character = require('./character').Character,
-    Factions = require('../dataTables/factions').Factions;
+var Character = require('./character'),
+    Factions = require('../dataTables/factions');
 
 class Rank {
     value;
@@ -36,7 +36,7 @@ class Rank {
     }
 }
 
-class NPC extends Character{
+module.exports = class NPC extends Character{
     name;
     rank;
     type;
@@ -60,6 +60,4 @@ class NPC extends Character{
         this.faction = faction;
         this.classification = classification;
     };
-}
-
-module.exports.NPC = NPC;
+};

@@ -11,7 +11,7 @@ var styles={
     }
 };
 
-var InputEditor = React.createClass({
+var InputEditor = module.exports = React.createClass({
     onKeyPress(e){
         if(e.key == "Enter"){
             this.props.onComplete();
@@ -39,5 +39,3 @@ var InputEditor = React.createClass({
         </div>
     }
 });
-
-module.exports.InputEditor = InputEditor;

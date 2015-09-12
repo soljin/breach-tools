@@ -1,15 +1,16 @@
 var React = require('react'),
-    EditorController = require('./editorController.jsx').EditorController,
-    InputEditor = require('./inputEditor.jsx').InputEditor,
-    SelectEditor = require('./selectEditor.jsx').SelectEditor,
+    EditorController = require('./editorController.jsx'),
+    InputEditor = require('./inputEditor.jsx'),
+    SelectEditor = require('./selectEditor.jsx'),
 
-    skillsList = require('../dataTables/skills').skillsList,
-    suits = require('../dataTables/suits').suits,
+    skillsList = require('../dataTables/skills'),
+    suits = require('../dataTables/suits'),
 
-    Attack = require('../models/attack').Attack,
-    AttackTypes = require('../models/attack').AttackTypes,
-    ResistType = require('../models/attack').ResistType,
-    ResistDisplayName = require('../models/attack').ResistDisplayName;
+    AttackModel = require('../models/attack'),
+    Attack = AttackModel.Attack,
+    AttackTypes = AttackModel.AttackTypes,
+    ResistType = AttackModel.ResistType,
+    ResistDisplayName = AttackModel.ResistDisplayName;
 
 var styles = {
     container:{
@@ -51,7 +52,7 @@ var smallRow = {
     fontSize:"14px"
 };
 
-var AttacksComponent = module.exports.AttacksComponent = React.createClass({
+var AttacksComponent = module.exports = React.createClass({
     mixins:[EditorController],
 
     onChange(value){
@@ -130,10 +131,15 @@ var AttacksComponent = module.exports.AttacksComponent = React.createClass({
 
     renderTrigger(attack, trigger, suitOpts){
         return <div>
-            <a style={styles.rightHover} title="Delete trigger suit." onClick={this.deleteTrigger.bind(this, attack, trigger)}>
+            <a className="noPrint" style={styles.rightHover} title="Delete trigger suit." onClick={this.deleteTrigger.bind(this, attack, trigger)}>
                 [delete trigger]
             </a>
             <div style={styles.row}>
+                <div style={styles.fleft}>
+                    {trigger.suits.map(suit => {
+                        return <a title="Click to delete suit." onClick={this.deleteSuit.bind(this, trigger, suit)}>{suit}</a>
+                    })}
+                </div>
                 {this.floatingEditorFactory(
                     SelectEditor,
                     (value)=>trigger.suits.push(value),
@@ -141,11 +147,7 @@ var AttacksComponent = module.exports.AttacksComponent = React.createClass({
                     null,
                     "Choose Suit for Trigger",
                     suitOpts,
-                    <div>
-                        {trigger.suits.map(suit => {
-                            return <a title="Click to delete suit." onClick={this.deleteSuit.bind(this, trigger, suit)}>{suit}</a>
-                        })} +Suit
-                    </div>,
+                    <a className="noPrint"> +Suit</a>,
                     styles.fleft
                 )}
                 {this.floatingEditorFactory(
@@ -187,7 +189,7 @@ var AttacksComponent = module.exports.AttacksComponent = React.createClass({
         }
 
         return <div style={styles.attack}>
-            <a style={styles.rightHover} title="Delete this attack" onClick={()=>this.deleteAttack(attack)}>[delete]</a>
+            <a className="noPrint" style={styles.rightHover} title="Delete this attack" onClick={()=>this.deleteAttack(attack)}>[delete]</a>
             <div style={styles.row}>
                 {this.floatingEditorFactory(
                     InputEditor,
@@ -240,7 +242,7 @@ var AttacksComponent = module.exports.AttacksComponent = React.createClass({
                         null,
                         "Choose Suit for this Attack",
                         suitOpts,
-                        " +Suit",
+                        <a className="noPrint"> +Suit</a>,
                         styles.fleft
                     )}
                 </div>
@@ -293,7 +295,7 @@ var AttacksComponent = module.exports.AttacksComponent = React.createClass({
                     null,
                     "Choose New Trigger Type",
                     suitOpts,
-                    <div>Add Trigger</div>,
+                    <div className="noPrint">Add Trigger</div>,
                     styles.fleft
                 )}
                 <div style={styles.clear}></div>
@@ -324,7 +326,7 @@ var AttacksComponent = module.exports.AttacksComponent = React.createClass({
                 null,
                 "Choose New Skill",
                 attackTypeOpts,
-                <div>Add Attack</div>,
+                <div className="noPrint">Add Attack</div>,
                 styles.addAttack
             )}
         </div>;

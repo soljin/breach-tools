@@ -1,4 +1,4 @@
-class Aspect{
+module.exports = class AsFpect{
     displayName;
     value;
     name;
@@ -17,6 +17,4 @@ class Aspect{
         this.value = value;
         this.addRank = addRank;
     }
-}
-
-module.exports.Aspect = Aspect;
+};

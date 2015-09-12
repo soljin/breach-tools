@@ -1,8 +1,13 @@
-class Talent{
+/**
+ * @class
+ * @type {Talent}
+ */
+module.exports = class Talent{
     name;
     description;
 
     /**
+     * @constructor
      * @param name
      * @param description
      */
@@ -10,6 +15,4 @@ class Talent{
         this.name = name;
         this.description = description;
     }
-}
-
-module.exports.Talent = Talent;
+};

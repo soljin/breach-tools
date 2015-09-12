@@ -11,7 +11,7 @@ var styles={
     }
 };
 
-var SelectEditor = React.createClass({
+var SelectEditor = module.exports = React.createClass({
     onKeyPress(e){
         if(e.key == "Enter"){
             this.props.onComplete();
@@ -61,5 +61,3 @@ var SelectEditor = React.createClass({
         </div>
     }
 });
-
-module.exports.SelectEditor = SelectEditor;

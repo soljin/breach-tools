@@ -1,4 +1,4 @@
-class Trigger{
+module.exports = class Trigger{
     suits;
     name;
     description;
@@ -13,6 +13,4 @@ class Trigger{
         this.name = name;
         this.description = description;
     }
-}
-
-module.exports.Trigger = Trigger;
+};

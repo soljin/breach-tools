@@ -31,7 +31,7 @@ var styles = {
     }
 };
 
-var FloatingEditor = React.createClass({
+var FloatingEditor = module.exports = React.createClass({
     getInitialState(){
         return {
             open: false
@@ -60,5 +60,3 @@ var FloatingEditor = React.createClass({
         </div>
     }
 });
-
-module.exports.FloatingEditor = FloatingEditor;

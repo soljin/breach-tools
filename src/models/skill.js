@@ -1,4 +1,8 @@
-class Skill{
+/**
+ * @class
+ * @type {Skill}
+ */
+module.exports = class Skill{
     type;
     name;
     aspect;
@@ -7,7 +11,7 @@ class Skill{
     actionValue;
 
     /**
-     *
+     * @constructor
      * @param type
      * @param name
      * @param aspect
@@ -23,6 +27,4 @@ class Skill{
         this.rank = rank;
         this.actionValue = aspects[aspect.toLowerCase()].value + rank;
     }
-}
-
-module.exports.Skill = Skill;
+};

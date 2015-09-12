@@ -1,6 +1,6 @@
-var Aspect = require('./aspect').Aspect;
+var Aspect = require('./aspect');
 
-class Aspects {
+module.exports = class Aspects {
     might;
     grace;
     speed;
@@ -38,6 +38,4 @@ class Aspects {
     toList(){
         return [this.might,  this.grace,  this.speed,  this.resilience,  this.charm,  this.intellect,  this.cunning,  this.tenacity];
     }
-}
-
-module.exports.Aspects = Aspects;
+};

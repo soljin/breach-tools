@@ -1,8 +1,8 @@
 var React = require('react'),
-    EditorController = require('./editorController.jsx').EditorController,
-    InputEditor = require('./inputEditor.jsx').InputEditor,
-    SelectEditor = require('./selectEditor.jsx').SelectEditor,
-    Factions = require('../dataTables/factions').Factions,
+    EditorController = require('./editorController.jsx'),
+    InputEditor = require('./inputEditor.jsx'),
+    SelectEditor = require('./selectEditor.jsx'),
+    Factions = require('../dataTables/factions'),
     Types = ["Living", "Undead", "Spirit"];
 
 var styles={
@@ -51,7 +51,7 @@ var FactionColorMap={
     "Ten Thunders":"#EECC00"
 };
 
-var NPCIdentity = React.createClass({
+var NPCIdentity = module.exports = React.createClass({
     mixins:[EditorController],
 
     render(){
@@ -133,5 +133,3 @@ var NPCIdentity = React.createClass({
         </div>
     }
 });
-
-module.exports.NPCIdentity = NPCIdentity;

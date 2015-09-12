@@ -1,8 +1,8 @@
 var React = require('react'),
-    EditorController = require('./editorController.jsx').EditorController,
-    InputEditor = require('./inputEditor.jsx').InputEditor,
-    SelectEditor = require('./selectEditor.jsx').SelectEditor,
-    skillsList = require('../dataTables/skills').skillsList;
+    EditorController = require('./editorController.jsx'),
+    InputEditor = require('./inputEditor.jsx'),
+    SelectEditor = require('./selectEditor.jsx'),
+    skillsList = require('../dataTables/skills');
 
 var styles = {
     container:{
@@ -25,7 +25,7 @@ var styles = {
     }
 };
 
-var Skills = React.createClass({
+var SkillsComponent = module.exports = React.createClass({
     mixins:[EditorController],
 
     onChange(value){
@@ -73,7 +73,7 @@ var Skills = React.createClass({
             <b>{skill.name} ({skill.rank})</b>,&nbsp;
             {skill.aspect},&nbsp;
             <b>({skill.actionValue})</b>&nbsp;
-            <a title="Delete Skill" onClick={this.removeSkill.bind(this, skill.name)}>x</a>
+            <a className="noPrint" title="Delete Skill" onClick={this.removeSkill.bind(this, skill.name)}>x</a>
         </span>;
     },
 
@@ -111,11 +111,9 @@ var Skills = React.createClass({
                 null,
                 "Choose New Skill",
                 this.getSkillOptions(),
-                <div>Add Skill</div>,
+                <div className="noPrint">Add Skill</div>,
                 styles.addSkill
             )}
         </div>;
     }
 });
-
-module.exports.Skills = Skills;

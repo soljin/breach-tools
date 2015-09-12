@@ -1,11 +1,9 @@
-module.exports = {
-    Factions:[
-        "Guild",
-        "Resurectionists",
-        "Neverborn",
-        "Archanists",
-        "Outcasts",
-        "Gremlins",
-        "Ten Thunders"
-    ]
-};
+module.exports = [
+    "Guild",
+    "Resurectionists",
+    "Neverborn",
+    "Archanists",
+    "Outcasts",
+    "Gremlins",
+    "Ten Thunders"
+];
